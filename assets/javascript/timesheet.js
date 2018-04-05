@@ -1,12 +1,12 @@
 // Initialize Firebase with link
 // Also remember to add link to html
 var config = {
-    apiKey: "AIzaSyCt2ceSEnv7GrbtwuqOTqrq_2Kw_WkwQ9A",
-    authDomain: "time-sheet-test-6d3a0.firebaseapp.com",
-    databaseURL: "https://time-sheet-test-6d3a0.firebaseio.com",
-    projectId: "time-sheet-test-6d3a0",
-    storageBucket: "",
-    messagingSenderId: "220461927002"
+    apiKey: "AIzaSyBiEhdNJRMGm9mw8h5sazwM7mIMonivBw0",
+    authDomain: "ateamtimesheet.firebaseapp.com",
+    databaseURL: "https://ateamtimesheet.firebaseio.com",
+    projectId: "ateamtimesheet",
+    storageBucket: "ateamtimesheet.appspot.com",
+    messagingSenderId: "620714707177"
   };
   firebase.initializeApp(config);
 
@@ -70,7 +70,7 @@ var config = {
         console.log(monthlyRate);
 
 
-        database.ref().set({
+        database.ref().push({
             name: name,
             role: role,
             startDate: startDate,
