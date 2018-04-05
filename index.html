@@ -5,28 +5,31 @@
       <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
       <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
       <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     
     <body>
-    
-        <div class="container">
-            <div id="instructions">
-                <h1></h1>
-                <p>Blah Blah Blah</P>
+    <div class = "row">
+        <div class = "col-md-2"></div>
+            <div class = "col-md-8">
+
+                <input class="form-control" type="text" id = "name-input" placeholder="Name">
+                <input class="form-control" type="text" id = "role-input" placeholder="Email">
+                <input class="form-control" type="text" id = "startDate-input" placeholder="More Stuff">
+                <input class="form-control form-control-sm" id = "monthlyRate-input" type="text" placeholder="Ben is lame">
+                <input class="form-control form-control-sm" id = "totalMonths-input" type="text" placeholder="Ben is rich">
+                <input class="form-control form-control-sm" id = "totalBilled-input" type="text" placeholder="Ben is billed">
+
+
+
+
+                <input class="btn btn-primary" type="submit" value="Submit">
+
             </div>
-    
-            <div id="gif-area"></div>
-    
-            <div>
-                <form id="form">
-                    <label for="user-input"></label>
-                    <input id="user-input">
-                    <input id="pressButton" type="submit" value="Submit">
-                </form>
-            </div>
-    
-    
-        </div>    
+        <div class = "col-md-2"></div>
+
+    </div>
+  
     
        <script src="assets/javascript/timesheet.js"></script>
     </body>
