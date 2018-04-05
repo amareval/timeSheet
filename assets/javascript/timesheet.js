@@ -1,40 +1,14 @@
 // Initialize Firebase with link
 // Also remember to add link to html
 var config = {
-    apiKey: "AIzaSyBiEhdNJRMGm9mw8h5sazwM7mIMonivBw0",
-    authDomain: "ateamtimesheet.firebaseapp.com",
-    databaseURL: "https://ateamtimesheet.firebaseio.com",
-    projectId: "ateamtimesheet",
-    storageBucket: "ateamtimesheet.appspot.com",
-    messagingSenderId: "620714707177"
+    apiKey: "AIzaSyCt2ceSEnv7GrbtwuqOTqrq_2Kw_WkwQ9A",
+    authDomain: "time-sheet-test-6d3a0.firebaseapp.com",
+    databaseURL: "https://time-sheet-test-6d3a0.firebaseio.com",
+    projectId: "time-sheet-test-6d3a0",
+    storageBucket: "",
+    messagingSenderId: "220461927002"
   };
   firebase.initializeApp(config);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -60,38 +34,50 @@ var config = {
     var totalMonths = '';
     var totalBilled = '';
 
-    $('#submit').on('click', function(event) {
+
+    database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+
+        var ts = snapshot.val();
+
+        // CALCULATE TOTAL MONTHS
+        // CALCULATE TOTAL BILLED
+
+        $('#name-display').html(ts.name);
+        $('#role-display').html(ts.role);
+        $('#startDate-display').html(ts.startDate);
+        $('#monthlyRate-display').html(ts.monthlyRate);
+        $('#totalMonths-display').html(ts.totalMonths);
+        $('#totalBilled-display').html(ts.totalBilled);
+
+
+
+    }, function(errorObject) {
+        console.log('Errors handled: ' + errorObject.code);
+    });
+
+    $('.btn').on('click', function(event) {
+
         event.preventDefault();
 
         name = $('#name-input').val().trim();
         role = $('#role-input').val().trim();
         startDate = $('#startDate-input').val().trim();
-        montlyRate = $('#montlyRate-input').val().trim();
+        monthlyRate = $('#monthlyRate-input').val().trim();
 
-        database.ref().push({
+        console.log(name);
+        console.log(role);
+        console.log(startDate);
+        console.log(monthlyRate);
+
+
+        database.ref().set({
             name: name,
             role: role,
             startDate: startDate,
-            montlyRate: monthlyRate,
-            totalMonths: totalMonths,
-            totalBilled: totalBilled
+            monhtlyRate: monthlyRate,
+
         });
 
     });
 
 
-    database.ref().orderByChild('dataAdded').limitToLast(1).on('child-added', function(snapshot) {
-
-        var ts = snapshot.val();
-
-
-        $('#name-input').html(ts.name);
-        $('#role-input').html(ts.role);
-        $('#startDate-input').html(ts.startDate);
-        $('#monthlyRate-input').html(ts.monthlyRate);
-        $('#totalMonths-input').html(ts.totalMonths);
-        $('#totalBilled-input').html(ts.totalBilled);
-
-
-
-    })
