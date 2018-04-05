@@ -50,3 +50,48 @@ var config = {
 
 // WHEN FIREBASE SENSES A CHANGE ON THE PAGE
     // CHANGE WINDOW HTML TO REFLECT USER DATA
+
+    var database = firebase.database();
+
+    var name = '';
+    var role = '';
+    var startDate = '';
+    var monthlyRate = '';
+    var totalMonths = '';
+    var totalBilled = '';
+
+    $('#submit').on('click', function(event) {
+        event.preventDefault();
+
+        name = $('#name-input').val().trim();
+        role = $('#role-input').val().trim();
+        startDate = $('#startDate-input').val().trim();
+        montlyRate = $('#montlyRate-input').val().trim();
+
+        database.ref().push({
+            name: name,
+            role: role,
+            startDate: startDate,
+            montlyRate: monthlyRate,
+            totalMonths: totalMonths,
+            totalBilled: totalBilled
+        });
+
+    });
+
+
+    database.ref().orderByChild('dataAdded').limitToLast(1).on('child-added', function(snapshot) {
+
+        var ts = snapshot.val();
+
+
+        $('#name-input').html(ts.name);
+        $('#role-input').html(ts.role);
+        $('#startDate-input').html(ts.startDate);
+        $('#monthlyRate-input').html(ts.monthlyRate);
+        $('#totalMonths-input').html(ts.totalMonths);
+        $('#totalBilled-input').html(ts.totalBilled);
+
+
+
+    })
